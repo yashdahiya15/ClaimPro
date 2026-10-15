@@ -1,0 +1,122 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ClaimPro - Claim Processing System</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <h2>📋 ClaimPro</h2>
+    <button data-page="dashboard">Dashboard</button>
+    <button data-page="filing">File Claim</button>
+    <button data-page="claims">Claim List</button>
+    <button data-page="review">Review & Approval</button>
+    <button data-page="settlement">Settlement</button>
+    <button data-page="documents">Documents</button>
+    <button data-page="reports">Reports</button>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <div>
+        <h1 id="page-title">Dashboard</h1>
+        <p>Insurance Claim Management System</p>
+      </div>
+      <button id="theme-toggle">Toggle Theme</button>
+    </header>
+
+    <section id="dashboard" class="page">
+      <h2>Claims Overview</h2>
+      <div class="stats">
+        <div class="card">Total Claims<h2 id="total">0</h2></div>
+        <div class="card">Pending<h2 id="pending">0</h2></div>
+        <div class="card">Approved<h2 id="approved">0</h2></div>
+        <div class="card">Settled<h2 id="settled">0</h2></div>
+      </div>
+      <h2>Recent Claims</h2>
+      <div id="recent-claims"></div>
+    </section>
+
+    <section id="filing" class="page hidden">
+      <h2>Submit a New Claim</h2>
+      <form id="claim-form">
+        <label>Claimant Name</label>
+        <input name="name" required>
+
+        <label>Policy Number</label>
+        <input name="policy" required>
+
+        <label>Claim Type</label>
+        <select name="type" required>
+          <option value="">Select type</option>
+          <option>Health</option>
+          <option>Vehicle</option>
+          <option>Life</option>
+          <option>Property</option>
+        </select>
+
+        <label>Incident Date</label>
+        <input name="date" type="date" required>
+
+        <label>Claim Amount (₹)</label>
+        <input name="amount" type="number" min="1" required>
+
+        <label>Incident Description</label>
+        <textarea name="description" required></textarea>
+
+        <label>Supporting Document (optional)</label>
+        <input name="document" type="file">
+
+        <button type="submit">Submit Claim</button>
+      </form>
+      <p id="form-message"></p>
+    </section>
+
+    <section id="claims" class="page hidden">
+      <h2>All Claims</h2>
+      <input id="search" placeholder="Search by name or claim number">
+      <select id="status-filter">
+        <option value="">All statuses</option>
+        <option>Filed</option>
+        <option>Under Review</option>
+        <option>Pending</option>
+        <option>Approved</option>
+        <option>Rejected</option>
+        <option>Settled</option>
+      </select>
+      <div id="claims-list"></div>
+    </section>
+
+    <section id="review" class="page hidden">
+      <h2>Review & Approval</h2>
+      <div id="review-list"></div>
+    </section>
+
+    <section id="settlement" class="page hidden">
+      <h2>Settlement Processing</h2>
+      <div id="settlement-list"></div>
+    </section>
+
+    <section id="documents" class="page hidden">
+      <h2>Document Management</h2>
+      <p>Documents selected during claim filing are listed with their claims.</p>
+      <div id="documents-list"></div>
+    </section>
+
+    <section id="reports" class="page hidden">
+      <h2>Claims Reports</h2>
+      <div id="report-summary"></div>
+      <button id="export-csv">Export CSV Report</button>
+    </section>
+
+    <footer>
+      ClaimPro | Internship Task WD-INS-002
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
